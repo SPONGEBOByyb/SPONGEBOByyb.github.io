@@ -1,145 +1,450 @@
 /* ============================================================
- * 笔记正文样式增强（通过 _config.butterfly.yml 的 inject 引入）
- * 目标：标题层级分明、重点更醒目、列表缩进更清楚
- * 只作用于文章正文 #article-container，不影响首页、侧栏等
+ * 全站样式：参考 Apple 官网的设计语言（简洁、留白、大圆角、毛玻璃）
+ * 通过 _config.butterfly.yml 的 inject 引入，只覆盖样式，不改主题文件
+ * 颜色都定义在下面的变量里，想换颜色改变量即可
  * ============================================================ */
 
+/* ---------- 颜色与字体变量 ---------- */
 :root {
-  --note-accent: #49b1f5;            /* 主色：与 Butterfly 默认主题色一致 */
-  --note-accent-soft: rgba(73, 177, 245, .10);
-  --note-h3: #ff7242;                /* 三级标题色 */
-  --note-h4: #1f9d8b;                /* 四级标题色 */
-  --note-mark: rgba(255, 196, 0, .38);  /* 加粗的荧光笔高亮 */
-  --note-strong: #1f2d3d;
-  --note-guide: rgba(73, 177, 245, .6);  /* 嵌套列表的竖线 */
-  --note-quote-text: #4c5560;
+  --ap-text: #1d1d1f;            /* 主文字 */
+  --ap-text-2: #6e6e73;          /* 次要文字 */
+  --ap-text-3: #86868b;          /* 辅助信息（日期、分类） */
+  --ap-bg: #f5f5f7;              /* 页面背景（浅灰） */
+  --ap-card: #ffffff;            /* 卡片背景 */
+  --ap-line: #d2d2d7;            /* 分隔细线 */
+  --ap-blue: #0071e3;            /* 按钮、强调 */
+  --ap-link: #0066cc;            /* 链接 */
+  --ap-fill: #f5f5f7;            /* 引用块、行内代码底色 */
+  --ap-mark: rgba(0, 113, 227, .14);  /* 加粗的淡蓝高亮 */
+  --ap-glass: rgba(255, 255, 255, .72);
+  --ap-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+  --ap-shadow-hover: 0 12px 36px rgba(0, 0, 0, .10);
+  --ap-radius: 18px;
+  --ap-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+             "PingFang SC", "Helvetica Neue", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+  --ap-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+
+  /* 覆盖 Butterfly 主题自带的变量 */
+  --global-bg: var(--ap-bg);
+  --card-bg: var(--ap-card);
+  --font-color: var(--ap-text);
+  --text-highlight-color: var(--ap-text);
+  --card-box-shadow: var(--ap-shadow);
+  --card-hover-box-shadow: var(--ap-shadow-hover);
+  --btn-bg: var(--ap-blue);
+  --btn-hover-color: #0077ed;
+  --blockquote-bg: var(--ap-fill);
+  --blockquote-color: var(--ap-text-2);
+  --toc-link-color: var(--ap-text-2);
+  --scrollbar-color: #c7c7cc;
+  --default-bg-color: var(--ap-blue);
+  --text-bg-hover: rgba(0, 113, 227, .12);
+  --pseudo-hover: var(--ap-blue);
+  --hr-border: var(--ap-line);
+  --hr-before-color: var(--ap-line);
+  --sidebar-bg: var(--ap-card);
 }
 
-[data-theme="dark"] {
-  --note-accent: #6cc4ff;
-  --note-accent-soft: rgba(108, 196, 255, .12);
-  --note-h3: #ff9a6b;
-  --note-h4: #4fd1bd;
-  --note-mark: rgba(255, 196, 0, .28);
-  --note-strong: #f2f2f2;
-  --note-guide: rgba(108, 196, 255, .5);
-  --note-quote-text: #b9c0c8;
+:root[data-theme="dark"] {
+  --ap-text: #f5f5f7;
+  --ap-text-2: #a1a1a6;
+  --ap-text-3: #86868b;
+  --ap-bg: #000000;
+  --ap-card: #1d1d1f;
+  --ap-line: #424245;
+  --ap-blue: #0a84ff;
+  --ap-link: #2997ff;
+  --ap-fill: #2c2c2e;
+  --ap-mark: rgba(41, 151, 255, .22);
+  --ap-glass: rgba(29, 29, 31, .72);
+  --ap-shadow: 0 4px 24px rgba(0, 0, 0, .5);
+  --ap-shadow-hover: 0 12px 36px rgba(0, 0, 0, .7);
+
+  --global-bg: var(--ap-bg);
+  --card-bg: var(--ap-card);
+  --font-color: var(--ap-text);
+  --text-highlight-color: var(--ap-text);
+  --btn-bg: var(--ap-blue);
+  --blockquote-bg: var(--ap-fill);
+  --blockquote-color: var(--ap-text-2);
+  --toc-link-color: var(--ap-text-2);
+  --scrollbar-color: #48484a;
+  --hr-border: var(--ap-line);
+  --hr-before-color: var(--ap-line);
+  --sidebar-bg: var(--ap-card);
 }
 
-/* ---------- 正文：字号与行距 ---------- */
+/* ---------- 全局 ---------- */
+body {
+  font-family: var(--ap-font);
+  color: var(--ap-text);
+  background: var(--ap-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: .01em;
+}
+a { transition: color .2s ease; }
+::selection { background: rgba(0, 113, 227, .2); }
+
+/* ---------- 顶部导航：滚动后变成毛玻璃 ---------- */
+#page-header.nav-fixed #nav {
+  background: var(--ap-glass);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+}
+#page-header.nav-fixed #nav a,
+#page-header.nav-fixed #nav #site-name,
+#page-header.nav-fixed #nav .site-page {
+  color: var(--ap-text);
+  text-shadow: none;
+}
+#nav #site-name,
+#nav .site-page {
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* 首页大标题 */
+#site-title {
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+#site-subtitle {
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+
+/* ---------- 卡片：大圆角 + 柔和阴影 + 悬停微微上浮 ---------- */
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+.layout > div:first-child:not(.recent-posts),
+#post,
+#page,
+#archive,
+#tag,
+#category {
+  border-radius: var(--ap-radius);
+  box-shadow: var(--ap-shadow);
+  border: none;
+}
+#recent-posts > .recent-post-item {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+#recent-posts > .recent-post-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ap-shadow-hover);
+}
+#recent-posts > .recent-post-item .post_cover img {
+  border-radius: 0;
+}
+
+/* 首页文章列表 */
+#recent-posts .article-title {
+  color: var(--ap-text);
+  font-size: 1.45em;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  line-height: 1.35;
+}
+#recent-posts .article-title:hover { color: var(--ap-link); }
+#recent-posts .article-meta-wrap,
+#recent-posts .article-meta-wrap a {
+  color: var(--ap-text-3);
+  font-size: 12.5px;
+}
+#recent-posts .content {
+  color: var(--ap-text-2);
+  line-height: 1.7;
+}
+
+/* ---------- 侧栏 ---------- */
+#aside-content .card-widget .item-headline {
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+#aside-content .card-info .author-info__name {
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+#aside-content .card-info .author-info__description,
+#aside-content .card-info .headline {
+  color: var(--ap-text-2);
+}
+/* 胶囊按钮 */
+#aside-content #card-info-btn {
+  border-radius: 980px;
+  background: var(--ap-blue);
+  font-weight: 500;
+  transition: background .2s ease, transform .2s ease;
+}
+#aside-content #card-info-btn:hover {
+  background: #0077ed;
+  transform: scale(1.02);
+}
+/* 最新文章 */
+#aside-content .aside-list > .aside-list-item .content > .title { color: var(--ap-text); }
+#aside-content .aside-list > .aside-list-item .content > time { color: var(--ap-text-3); }
+
+/* 目录：当前小节用淡蓝底 + 蓝字，而不是整块青色 */
+#aside-content #card-toc .toc-content .toc-link.active {
+  background: rgba(0, 113, 227, .10);
+  color: var(--ap-blue);
+  border-radius: 8px;
+  font-weight: 600;
+}
+#aside-content #card-toc .toc-content .toc-link:hover { color: var(--ap-blue); }
+#aside-content #card-toc .toc-percentage { color: var(--ap-text-3); }
+
+/* ---------- 分页、右下角按钮 ---------- */
+#pagination .page-number,
+#pagination .extend {
+  border-radius: 980px;
+}
+#pagination .page-number.current {
+  background: var(--ap-blue);
+}
+#rightside > div > button,
+#rightside > div > a {
+  border-radius: 50%;
+  background: var(--ap-glass);
+  color: var(--ap-text);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: var(--ap-shadow);
+}
+#rightside > div > button:hover,
+#rightside > div > a:hover { background: var(--ap-blue); color: #fff; }
+
+/* ---------- 页脚：浅灰底 + 小号灰字 ---------- */
+#footer {
+  background: var(--ap-bg) !important;
+  border-top: 1px solid var(--ap-line);
+}
+#footer::before { display: none; }
+#footer #footer-wrap,
+#footer #footer-wrap a {
+  color: var(--ap-text-3);
+  font-size: 12px;
+  text-shadow: none;
+}
+#footer #footer-wrap a:hover { color: var(--ap-link); }
+
+/* ---------- 文章页顶部的标题区 ---------- */
+#post-info #post-title,
+#post-info .post-title {
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+/* 文章底部：版权、标签、上一篇/下一篇 */
+#post .post-copyright {
+  border: none;
+  border-radius: 14px;
+  background: var(--ap-fill);
+}
+#post .post-copyright::before { display: none; }
+#post .tag_share .post-meta__tags {
+  border-radius: 980px;
+  border-color: var(--ap-line);
+}
+#pagination.pagination-post,
+.relatedPosts > .relatedPosts-list > div,
+#post .pagination-related {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* 相关推荐、上一篇/下一篇：文章没有封面图时，主题会用深色色块垫底，
+ * 这里改成浅灰卡片 + 深色文字；有封面图的文章不受影响 */
+.relatedPosts-list > div:has(> a > .cover[style*="default-bg-color"]),
+#pagination.pagination-post > div:has(> a > .cover[style*="default-bg-color"]) {
+  background: var(--ap-fill);
+  transition: background .2s ease;
+}
+.relatedPosts-list > div:has(> a > .cover[style*="default-bg-color"]):hover,
+#pagination.pagination-post > div:has(> a > .cover[style*="default-bg-color"]):hover {
+  background: var(--ap-line);
+}
+.relatedPosts-list .cover[style*="default-bg-color"],
+#pagination.pagination-post .cover[style*="default-bg-color"] {
+  display: none;
+}
+.relatedPosts-list > div:has(> a > .cover[style*="default-bg-color"]) :is(.content, .date, .title),
+#pagination.pagination-post > div:has(> a > .cover[style*="default-bg-color"]) :is(.pagination-info, .label, .prev_info, .next_info) {
+  color: var(--ap-text);
+}
+.relatedPosts-list > div:has(> a > .cover[style*="default-bg-color"]) .date,
+#pagination.pagination-post > div:has(> a > .cover[style*="default-bg-color"]) .label {
+  color: var(--ap-text-3);
+}
+.relatedPosts-list .title,
+#pagination.pagination-post :is(.prev_info, .next_info) {
+  font-weight: 600;
+}
+.relatedPosts > .relatedPosts-headline {
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ============================================================
+ * 文章正文
+ * ============================================================ */
 #article-container {
-  font-size: 15px;
-  line-height: 1.85;
+  color: var(--ap-text);
+  font-size: 15.5px;
+  line-height: 1.8;
 }
+#article-container p { margin: 0 0 1em; }
 
-/* ---------- 标题层级 ---------- */
+/* 链接：蓝色，悬停下划线 */
+#article-container a:not(.headerlink):not(.fancybox) {
+  color: var(--ap-link);
+  text-decoration: none;
+  border-bottom: none;
+}
+#article-container a:not(.headerlink):not(.fancybox):hover { text-decoration: underline; }
+
+/* ---------- 标题：靠字号、字重、留白区分层级 ---------- */
 #article-container h1,
 #article-container h2,
 #article-container h3,
-#article-container h4 {
-  line-height: 1.5;
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  color: var(--ap-text);
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 0;
+  border: none;
+  background: none;
 }
+/* 去掉 Butterfly 标题前的小图标 */
+#article-container :is(h1, h2, h3, h4, h5, h6)::before { display: none; }
+#article-container :is(h1, h2, h3, h4, h5, h6) { padding-left: 0 !important; }
 
-/* 一级/二级标题：色块 + 左侧粗色条，作为大章节 */
+/* 一级/二级：大章节，上方一条细线隔开 */
 #article-container h1,
 #article-container h2 {
-  margin: 2.2em 0 1em;
-  padding: .45em .8em;
-  border-left: 6px solid var(--note-accent);
-  border-radius: 0 8px 8px 0;
-  background: var(--note-accent-soft);
+  margin: 2.6em 0 .9em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--ap-line);
+  letter-spacing: -.02em;
 }
-#article-container h1 { font-size: 1.6em; }
-#article-container h2 { font-size: 1.4em; }
+#article-container h1 { font-size: 1.9em; }
+#article-container h2 { font-size: 1.6em; }
+#article-container > :is(h1, h2):first-child {
+  margin-top: .2em;
+  padding-top: 0;
+  border-top: none;
+}
 
-/* 三级标题：左侧细色条，作为小节 */
+/* 三级：小节 */
 #article-container h3 {
-  margin: 1.8em 0 .8em;
-  padding-left: .65em;
-  border-left: 4px solid var(--note-h3);
-  font-size: 1.2em;
+  margin: 2em 0 .7em;
+  font-size: 1.28em;
+  letter-spacing: -.015em;
 }
 
-/* 四级标题：彩色字 + 小方块标记 */
+/* 四级：灰色小标题 */
 #article-container h4 {
-  margin: 1.5em 0 .6em;
-  color: var(--note-h4);
-  font-size: 1.08em;
-}
-#article-container h4::before {
-  content: "";
-  display: inline-block;
-  width: .5em;
-  height: .5em;
-  margin-right: .5em;
-  border-radius: 2px;
-  background: var(--note-h4);
-  vertical-align: .12em;
+  margin: 1.6em 0 .5em;
+  font-size: 1.06em;
+  color: var(--ap-text-2);
 }
 
-/* 标题里的公式不要被色块背景挤压 */
-#article-container h2 mjx-container,
-#article-container h3 mjx-container {
-  margin: 0 .15em;
-}
-
-/* ---------- 重点：加粗 = 荧光笔高亮 ---------- */
+/* ---------- 重点：加粗 + 淡蓝高亮 ---------- */
 #article-container strong,
 #article-container b {
-  color: var(--note-strong);
-  font-weight: 700;
-  background: linear-gradient(transparent 58%, var(--note-mark) 0);
-  padding: 0 .1em;
+  color: var(--ap-text);
+  font-weight: 600;
+  background: linear-gradient(transparent 62%, var(--ap-mark) 0);
+  padding: 0 .08em;
 }
-/* 标题和表头里的加粗不需要高亮 */
 #article-container :is(h1, h2, h3, h4, h5, h6, th) :is(strong, b) {
   background: none;
   padding: 0;
-  color: inherit;
 }
 
-/* ---------- 列表：缩进与层级引导线 ---------- */
+/* ---------- 列表：缩进 + 细线表示层级 ---------- */
 #article-container ul,
 #article-container ol {
-  padding-left: 1.6em;
+  padding-left: 1.5em;
 }
-#article-container li {
-  margin: .3em 0;
-}
-#article-container li::marker {
-  color: var(--note-accent);
-  font-weight: 700;
-}
+#article-container li { margin: .35em 0; }
+#article-container li::marker { color: var(--ap-text-3); }
+#article-container ol > li::marker { font-weight: 600; }
 
-/* 嵌套列表：更深的缩进 + 左侧虚线，一眼看出从属关系 */
 #article-container li > ul,
 #article-container li > ol {
-  margin: .3em 0 .3em .2em;
-  padding-left: 1.4em;
-  border-left: 2px dashed var(--note-guide);
-}
-#article-container li > ul > li::marker,
-#article-container li > ol > li::marker {
-  color: var(--note-h3);
-}
-#article-container li li > ul > li::marker,
-#article-container li li > ol > li::marker {
-  color: var(--note-h4);
+  margin: .35em 0 .35em .15em;
+  padding-left: 1.35em;
+  border-left: 1px solid var(--ap-line);
 }
 
-/* ---------- 引用块：补充说明 / 总结 ---------- */
+/* ---------- 引用块：浅灰圆角卡片 ---------- */
 #article-container blockquote {
-  margin: 1em 0;
-  padding: .6em 1em;
-  border-left-width: 4px;
-  border-radius: 0 6px 6px 0;
-  color: var(--note-quote-text);
+  margin: 1.2em 0;
+  padding: .9em 1.2em;
+  border: none;
+  border-radius: 14px;
+  background: var(--ap-fill);
+  color: var(--ap-text-2);
 }
-#article-container blockquote > :last-child {
-  margin-bottom: 0;
+#article-container blockquote > :last-child { margin-bottom: 0; }
+
+/* ---------- 代码 ---------- */
+#article-container :not(pre) > code {
+  font-family: var(--ap-mono);
+  font-size: .88em;
+  padding: .12em .4em;
+  border-radius: 6px;
+  background: var(--ap-fill);
+  color: #c41a16;
+}
+:root[data-theme="dark"] #article-container :not(pre) > code { color: #ff7b72; }
+#article-container figure.highlight {
+  border-radius: 12px;
+  box-shadow: none;
+  overflow: hidden;
+}
+#article-container figure.highlight,
+#article-container figure.highlight * {
+  font-family: var(--ap-mono);
 }
 
-/* ---------- 段落间距 ---------- */
-#article-container p {
-  margin: 0 0 .9em;
+/* ---------- 表格：细线（代码块内部也是 table，要排除掉） ---------- */
+/* 主题默认 overflow-x: scroll 会一直显示滚动条，改成需要时才显示 */
+#article-container .table-wrap { overflow-x: auto; }
+#article-container table:not(.highlight table) {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ap-line);
+  border-collapse: separate;
+  border-spacing: 0;
 }
+#article-container table:not(.highlight table) th {
+  background: var(--ap-fill);
+  font-weight: 600;
+}
+#article-container table:not(.highlight table) :is(th, td) {
+  border: none;
+  border-bottom: 1px solid var(--ap-line);
+  border-right: 1px solid var(--ap-line);
+  padding: .55em .9em;
+}
+#article-container table:not(.highlight table) tr > :last-child { border-right: none; }
+#article-container table:not(.highlight table) tr:last-child > td { border-bottom: none; }
+
+/* ---------- 图片：圆角 ---------- */
+#article-container img {
+  border-radius: 12px;
+}
+
+/* ---------- 分隔线 ---------- */
+#article-container hr {
+  border: none;
+  border-top: 1px solid var(--ap-line);
+  margin: 2.4em 0;
+}
+#article-container hr::before { display: none; }
