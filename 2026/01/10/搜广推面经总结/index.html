@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>搜广推面经总结 | SpongeBob's Blog</title><meta name="author" content="SpongeBob"><meta name="copyright" content="SpongeBob"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="常见面试问题LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别）Shared bottom、MMoE、PLE的联系以及演讲过程高频八股1、AUC&#x2F;F1 2、Transformer（encoder&#x2F;decoder&#x2F;attention&#x2F;masked机制常见） 3、优化器 4、L1&#x2F;L2正则化 5、lightgbm&#x2F;">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>搜广推面经总结 | SpongeBob's Blog</title><meta name="author" content="SpongeBob"><meta name="copyright" content="SpongeBob"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="常见面试问题 LightGBM和XGBoost的联系与区别（可以引申到Boosting和Bagging） 如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别） Shared bottom、MMoE、PLE的联系以及演进过程 高频八股 1、AUC&#x2F;F1 2、Transformer（encoder&#x2F;decoder&#x2F;attention&#x2F;masked机制常见） 3、优化器 4、L1&#x2F;L2正则化 5、lig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搜广推面经总结">
 <meta property="og:url" content="https://spongebobyyb.github.io/2026/01/10/%E6%90%9C%E5%B9%BF%E6%8E%A8%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="SpongeBob&#39;s Blog">
-<meta property="og:description" content="常见面试问题LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别）Shared bottom、MMoE、PLE的联系以及演讲过程高频八股1、AUC&#x2F;F1 2、Transformer（encoder&#x2F;decoder&#x2F;attention&#x2F;masked机制常见） 3、优化器 4、L1&#x2F;L2正则化 5、lightgbm&#x2F;">
+<meta property="og:description" content="常见面试问题 LightGBM和XGBoost的联系与区别（可以引申到Boosting和Bagging） 如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别） Shared bottom、MMoE、PLE的联系以及演进过程 高频八股 1、AUC&#x2F;F1 2、Transformer（encoder&#x2F;decoder&#x2F;attention&#x2F;masked机制常见） 3、优化器 4、L1&#x2F;L2正则化 5、lig">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spongebobyyb.github.io/img/new.jpg">
 <meta property="article:published_time" content="2026-01-10T01:40:30.000Z">
-<meta property="article:modified_time" content="2026-10-15T20:19:27.539Z">
+<meta property="article:modified_time" content="2026-10-15T20:53:58.821Z">
 <meta property="article:author" content="SpongeBob">
 <meta property="article:tag" content="面经">
 <meta property="article:tag" content="推荐系统">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2026-10-16 04:19:27'
+  postUpdate: '2026-10-16 04:53:58'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -154,7 +154,12 @@
         }
       }
       detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/new.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/CS_Top.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="SpongeBob's Blog"><img class="site-icon" src="/img/new.jpg"/><span class="site-name">SpongeBob's Blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">搜广推面经总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-10T01:40:30.000Z" title="发表于 2026-01-10 09:40:30">2026-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-15T20:19:27.539Z" title="更新于 2026-10-16 04:19:27">2026-10-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">推荐系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="搜广推面经总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="常见面试问题"><a href="#常见面试问题" class="headerlink" title="常见面试问题"></a>常见面试问题</h2><h3 id="LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）"><a href="#LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）" class="headerlink" title="LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）"></a>LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）</h3><h3 id="如何解决过拟合？（可以引申到L1-L2正则化的区别）"><a href="#如何解决过拟合？（可以引申到L1-L2正则化的区别）" class="headerlink" title="如何解决过拟合？（可以引申到L1/L2正则化的区别）"></a>如何解决过拟合？（可以引申到L1/L2正则化的区别）</h3><h3 id="Shared-bottom、MMoE、PLE的联系以及演讲过程"><a href="#Shared-bottom、MMoE、PLE的联系以及演讲过程" class="headerlink" title="Shared bottom、MMoE、PLE的联系以及演讲过程"></a>Shared bottom、MMoE、PLE的联系以及演讲过程</h3><h2 id="高频八股"><a href="#高频八股" class="headerlink" title="高频八股"></a>高频八股</h2><p>1、AUC/F1</p>
+    })(window)</script><link rel="stylesheet" href="/css/mathjax.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/new.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/CS_Top.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="SpongeBob's Blog"><img class="site-icon" src="/img/new.jpg"/><span class="site-name">SpongeBob's Blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">搜广推面经总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-10T01:40:30.000Z" title="发表于 2026-01-10 09:40:30">2026-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-15T20:53:58.821Z" title="更新于 2026-10-16 04:53:58">2026-10-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">推荐系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="搜广推面经总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="常见面试问题">常见面试问题</h2>
+<h3 id="LightGBM和XGBoost的联系与区别（可以引申到Boosting和Bagging）">LightGBM和XGBoost的联系与区别（可以引申到Boosting和Bagging）</h3>
+<h3 id="如何解决过拟合？（可以引申到L1-L2正则化的区别）">如何解决过拟合？（可以引申到L1/L2正则化的区别）</h3>
+<h3 id="Shared-bottom、MMoE、PLE的联系以及演进过程">Shared bottom、MMoE、PLE的联系以及演进过程</h3>
+<h2 id="高频八股">高频八股</h2>
+<p>1、AUC/F1</p>
 <p>2、Transformer（encoder/decoder/attention/masked机制常见）</p>
 <p>3、优化器</p>
 <p>4、L1/L2正则化</p>
@@ -172,25 +177,44 @@
 <p>16、NDCG</p>
 <p>17、word2vec</p>
 <p>18、LR/SVM等</p>
-<h3 id="搜广推最高频八股（一）"><a href="#搜广推最高频八股（一）" class="headerlink" title="搜广推最高频八股（一）"></a>搜广推最高频八股（一）</h3><p>1.评估特征重要性有哪些方法<br>2.auc 的含义，怎么计算，以及 guac<br>3.过拟合的解决办法（围绕模型结构，特征数，样本处理，L1L2 正则化，dropout 等等回答）<br>4.target attention 的计算方式一定要搞清楚 QKV 以及计算过程中的维度变化<br>5.wide deep 以及 deepFM 的模型细节（包括模型结构以及输入等）</p>
+<h3 id="搜广推最高频八股（一）">搜广推最高频八股（一）</h3>
+<p>1.评估特征重要性有哪些方法<br>
+2.auc 的含义，怎么计算，以及 guac<br>
+3.过拟合的解决办法（围绕模型结构，特征数，样本处理，L1L2 正则化，dropout 等等回答）<br>
+4.target attention 的计算方式一定要搞清楚 QKV 以及计算过程中的维度变化<br>
+5.wide deep 以及 deepFM 的模型细节（包括模型结构以及输入等）</p>
 <blockquote>
-<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/1Unqy5jvKlA">http://xhslink.com/o/1Unqy5jvKlA</a> </p>
+<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/1Unqy5jvKlA">http://xhslink.com/o/1Unqy5jvKlA</a></p>
 </blockquote>
-<h3 id="搜广推最高频八股（二）"><a href="#搜广推最高频八股（二）" class="headerlink" title="搜广推最高频八股（二）"></a>搜广推最高频八股（二）</h3><p>1.transformer 的 attention 除以根号 k 的原因<br>2.DIN 模型的细节<br>3.离线指标好，线上指标不行（线上线下不一致）</p>
+<h3 id="搜广推最高频八股（二）">搜广推最高频八股（二）</h3>
+<p>1.transformer 的 attention 除以根号 k 的原因<br>
+2.DIN 模型的细节<br>
+3.离线指标好，线上指标不行（线上线下不一致）</p>
 <p>答：可以考虑特征穿越、老汤模型、冰山：系统的内在缺陷、链路一致性问题</p>
-<p>4.share bottom，mmoe，ple 模型（多任务模型）细节和演化<br>5.过拟合和欠拟合的表现和解决方法</p>
+<p>4.share bottom，mmoe，ple 模型（多任务模型）细节和演化<br>
+5.过拟合和欠拟合的表现和解决方法</p>
 <blockquote>
-<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/9wA7DMIRJB">http://xhslink.com/o/9wA7DMIRJB</a> </p>
+<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/9wA7DMIRJB">http://xhslink.com/o/9wA7DMIRJB</a></p>
 </blockquote>
-<h3 id="搜广推最高频八股（三）"><a href="#搜广推最高频八股（三）" class="headerlink" title="搜广推最高频八股（三）"></a>搜广推最高频八股（三）</h3><p>1.多目标学习的跷跷板问题有哪些缓解或解决思路（例如模型侧 sharebottom 升级 mmoe 或 ple ，损失函数设计（权重）等等）<br>2.常见的优化器对比和原理（SGD，RMSProp，Adam，AdaGrad 等等）<br>3.如何防止梯度消失和梯度爆炸（一般碰到这种问题的难度的问题就是送分，也能看出来面试官这一轮对你印象比较好的概率高不想为难你[doge]）<br>4.常见的损失函数原理和对比，工程中有时会做一些定制，例如 a✖️tanh（bx）来调节输出范围和梯度敏感性<br>5.如何筛选特征（1.拍脑袋 2.看一些类似相关性的指标等，3.很有含金量的方法，离线挨个 mask 掉单个特征，看 auc 的跌幅）</p>
+<h3 id="搜广推最高频八股（三）">搜广推最高频八股（三）</h3>
+<p>1.多目标学习的跷跷板问题有哪些缓解或解决思路（例如模型侧 sharebottom 升级 mmoe 或 ple ，损失函数设计（权重）等等）<br>
+2.常见的优化器对比和原理（SGD，RMSProp，Adam，AdaGrad 等等）<br>
+3.如何防止梯度消失和梯度爆炸（一般碰到这种问题的难度的问题就是送分，也能看出来面试官这一轮对你印象比较好的概率高不想为难你[doge]）<br>
+4.常见的损失函数原理和对比，工程中有时会做一些定制，例如 a✖️tanh（bx）来调节输出范围和梯度敏感性<br>
+5.如何筛选特征（1.拍脑袋 2.看一些类似相关性的指标等，3.很有含金量的方法，离线挨个 mask 掉单个特征，看 auc 的跌幅）</p>
 <blockquote>
-<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/4lomnpf0oEa">http://xhslink.com/o/4lomnpf0oEa</a> </p>
+<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/4lomnpf0oEa">http://xhslink.com/o/4lomnpf0oEa</a></p>
 </blockquote>
-<h3 id="搜广推最高频八股（四）"><a href="#搜广推最高频八股（四）" class="headerlink" title="搜广推最高频八股（四）"></a>搜广推最高频八股（四）</h3><p>1.对比下推荐搜索广告的区别（推荐：增加用户粘性，被动触发，算法侧重长期建模等等，搜索：query 的处理，主动触发，更强调相关性，广告：商业变现，考虑出价，ecpm 等等）<br>2.数据穿越问题，一些动作的时间靠后，如购买，退货等等，但是都统计了一遍点击，导致某些指标虚高，解决方法：时间窗口，负采样等等）<br>3.召回：ucf，icf ，向量化召回等等，常见的融合多路召回的方法：蛇形 merge 等等</p>
+<h3 id="搜广推最高频八股（四）">搜广推最高频八股（四）</h3>
+<p>1.对比下推荐搜索广告的区别（推荐：增加用户粘性，被动触发，算法侧重长期建模等等，搜索：query 的处理，主动触发，更强调相关性，广告：商业变现，考虑出价，ecpm 等等）<br>
+2.数据穿越问题，一些动作的时间靠后，如购买，退货等等，但是都统计了一遍点击，导致某些指标虚高，解决方法：时间窗口，负采样等等）<br>
+3.召回：ucf，icf ，向量化召回等等，常见的融合多路召回的方法：蛇形 merge 等等</p>
 <blockquote>
-<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/9bF8C0FPZMx">http://xhslink.com/o/9bF8C0FPZMx</a> </p>
+<p>参考笔记：<a target="_blank" rel="noopener" href="http://xhslink.com/o/9bF8C0FPZMx">http://xhslink.com/o/9bF8C0FPZMx</a></p>
 </blockquote>
-<h2 id="自己的面经"><a href="#自己的面经" class="headerlink" title="自己的面经"></a>自己的面经</h2><h3 id="百度推荐算法一面"><a href="#百度推荐算法一面" class="headerlink" title="百度推荐算法一面"></a>百度推荐算法一面</h3><p>面试官：段奕</p>
+<h2 id="自己的面经">自己的面经</h2>
+<h3 id="百度推荐算法一面">百度推荐算法一面</h3>
+<p>面试官：段奕</p>
 <p>自我介绍+项目相关</p>
 <p><strong>介绍一下第一个项目</strong></p>
 <p>为什么使用多尺度卷积？</p>
@@ -217,47 +241,67 @@
 <p>示例：</p>
 <p>输入：<code>nums = [3, 4, 2]</code></p>
 <p>输出：<code>6</code></p>
-<p>反问：组里的业务：百度听书的全链路，但是面试官是负责召回和重排多样性部分的<br>自己的缺点：对项目的熟悉度差一点，代码手撕差一点</p>
-<h3 id="百度推广搜NLP算法工程师实习生一面"><a href="#百度推广搜NLP算法工程师实习生一面" class="headerlink" title="百度推广搜NLP算法工程师实习生一面"></a>百度推广搜NLP算法工程师实习生一面</h3><p>项目介绍，问项目<br>几路召回具体是怎么做的？</p>
+<p>反问：组里的业务：百度听书的全链路，但是面试官是负责召回和重排多样性部分的<br>
+自己的缺点：对项目的熟悉度差一点，代码手撕差一点</p>
+<h3 id="百度推广搜NLP算法工程师实习生一面">百度推广搜NLP算法工程师实习生一面</h3>
+<p>项目介绍，问项目<br>
+几路召回具体是怎么做的？</p>
 <p>多路召回如何融合？</p>
 <p>如果用户点击的倾向于某一路召回的item，该如何调整？</p>
 <p>手撕：ItemCF</p>
 <blockquote>
-<p>请用Python实现一个简单的「物品相似度计算」函数：输入为用户-物品交互字典（如 <code>&#123;&#39;user1&#39;: [&#39;item1&#39;, &#39;item2&#39;], &#39;user2&#39;: [&#39;item2&#39;, &#39;item3&#39;]&#125;</code>），输出为任意两个物品的余弦相似度（如 item1 和 item2 的相似度），要求考虑计算效率，避免重复计算。</p>
+<p>请用Python实现一个简单的「物品相似度计算」函数：输入为用户-物品交互字典（如 <code>&#123;'user1': ['item1', 'item2'], 'user2': ['item2', 'item3']&#125;</code>），输出为任意两个物品的余弦相似度（如 item1 和 item2 的相似度），要求考虑计算效率，避免重复计算。</p>
 </blockquote>
 <p>用prompt给大模型，如何判断输出结果集的好坏？</p>
-<p>场景题：<br>特征如何选取？<br>冷启动怎么做？<br>使用过大规模数据库么？像Hadoop这种</p>
-<p>了解过python的一下相关特性么，加速大规模数据处理相关。<br>手撕：合并区间<br>反问：组里业务，答：百度网盘和文库的Feed流推荐，也有海外一些网盘等。<br>是否全链路都会做？答：是的，具体说了一些。</p>
-<h2 id="别人的面经"><a href="#别人的面经" class="headerlink" title="别人的面经"></a>别人的面经</h2><h3 id="百度一面1"><a href="#百度一面1" class="headerlink" title="百度一面1"></a>百度一面1</h3><ol>
-<li><p><strong>相似度怎么算的</strong></p>
+<p>场景题：<br>
+特征如何选取？<br>
+冷启动怎么做？<br>
+使用过大规模数据库么？像Hadoop这种</p>
+<p>了解过python的一下相关特性么，加速大规模数据处理相关。<br>
+手撕：合并区间<br>
+反问：组里业务，答：百度网盘和文库的Feed流推荐，也有海外一些网盘等。<br>
+是否全链路都会做？答：是的，具体说了一些。</p>
+<h2 id="别人的面经">别人的面经</h2>
+<h3 id="百度一面1">百度一面1</h3>
+<ol>
+<li>
+<p><strong>相似度怎么算的</strong></p>
 </li>
-<li><p><strong>怎么根据相似度进行召回</strong></p>
+<li>
+<p><strong>怎么根据相似度进行召回</strong></p>
 </li>
-<li><p><strong>itemcf和swingcf</strong></p>
+<li>
+<p><strong>itemcf和swingcf</strong></p>
 </li>
 </ol>
 <p>答：这两个唯一的区别在于物品的相似度，ItemCF两个物品重合的用户比例高，则判定两个物品相似，Swing则额外考虑重合的用户是否来自同一个小圈子。</p>
 <p><img src="image-20260111155409104.png" alt="image-20260111155409104"></p>
-<ol>
+<ol start="4">
 <li><strong>怎么进行多路召回融合</strong></li>
 </ol>
 <p>答：直接将两个召回的物品做concat，然后去重；</p>
 <p>如果数量较多的召回，可以先取出每路召回的第一个，依此类推；</p>
-<ol>
+<ol start="5">
 <li><strong>构造了哪些特征</strong></li>
 </ol>
-<p>$\Delta$time = 点击时间戳-创建时间</p>
-<ol>
+<p>
+    <span class="mjx-wrap">
+      <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.885ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 833 716" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi></math></mjx-assistive-mml></mjx-container>
+    </span>
+  time = 点击时间戳-创建时间</p>
+<ol start="6">
 <li><strong>DIN模型的输入和输出</strong></li>
 </ol>
 <p>输入：</p>
 <ul>
-<li>用户特征：<ul>
+<li>用户特征：
+<ul>
 <li>用户静态特征（如 age, gender）</li>
 <li>用户行为序列（list of item embeddings）</li>
 </ul>
 </li>
-<li>物品特征：<ul>
+<li>物品特征：
+<ul>
 <li>目标 item 的 embedding</li>
 <li>物品侧其他特征（如 category, price）</li>
 </ul>
@@ -270,21 +314,24 @@
 <blockquote>
 <p>DIN 的核心是 <strong>activation unit</strong>，通过目标 item 与用户历史行为的 attention 计算加权用户兴趣表示。</p>
 </blockquote>
-<ol>
+<ol start="7">
 <li><strong>DIN里面的embedding怎么得到</strong></li>
 </ol>
 <p>Embedding 获取方式：</p>
 <ol>
-<li>ID 类特征（item_id, user_id, cate_id 等）：<ul>
+<li>ID 类特征（item_id, user_id, cate_id 等）：
+<ul>
 <li>通过 <strong>Embedding Lookup Table</strong>（即 nn.Embedding）从随机初始化或预训练的 embedding matrix 中查表得到。</li>
 <li>通常在训练过程中端到端学习。</li>
 </ul>
 </li>
-<li>预训练 embedding：<ul>
+<li>预训练 embedding：
+<ul>
 <li>可用 Word2Vec、GraphSAGE、双塔模型等预训练 item/user embedding，作为 DIN 的初始化或固定输入。</li>
 </ul>
 </li>
-<li>多模态 embedding：<ul>
+<li>多模态 embedding：
+<ul>
 <li>图像用 ResNet 提取，文本用 BERT，再 concat 或 fusion 作为 item embedding。</li>
 </ul>
 </li>
@@ -292,7 +339,7 @@
 <blockquote>
 <p>注意：DIN 原始论文中，所有 ID 类特征都通过 embedding layer 映射为 dense 向量。</p>
 </blockquote>
-<ol>
+<ol start="8">
 <li><strong>AUC怎么算</strong></li>
 </ol>
 <p>AUC（Area Under ROC Curve）衡量模型排序能力。</p>
@@ -302,15 +349,26 @@
 <li>AUC = 曲线下面积 ∈ [0.5, 1.0]，越大越好。</li>
 </ul>
 <p>在排序算法中：</p>
-<script type="math/tex; mode=display">
-\text{AUC} = \frac{\text{正确排序的样本对}}{\text{所有样本对}}</script><blockquote>
+
+    <span class="mjx-wrap">
+      <mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg style="vertical-align: -2.059ex;" xmlns="http://www.w3.org/2000/svg" width="27.139ex" height="5.285ex" role="img" focusable="false" viewBox="0 -1426 11995.6 2336" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><path data-c="41" d="M255 0Q240 3 140 3Q48 3 39 0H32V46H47Q119 49 139 88Q140 91 192 245T295 553T348 708Q351 716 366 716H376Q396 715 400 709Q402 707 508 390L617 67Q624 54 636 51T687 46H717V0H708Q699 3 581 3Q458 3 437 0H427V46H440Q510 46 510 64Q510 66 486 138L462 209H229L209 150Q189 91 189 85Q189 72 209 59T259 46H264V0H255ZM447 255L345 557L244 256Q244 255 345 255H447Z"></path><path data-c="55" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q57 680 180 680Q315 680 324 683H335V637H302Q262 636 251 634T233 622L232 418V291Q232 189 240 145T280 67Q325 24 389 24Q454 24 506 64T571 183Q575 206 575 410V598Q569 608 565 613T541 627T489 637H472V683H481Q496 680 598 680T715 683H724V637H707Q634 633 622 598L621 399Q620 194 617 180Q617 179 615 171Q595 83 531 31T389 -22Q304 -22 226 33T130 192Q129 201 128 412V622Z" transform="translate(750,0)"></path><path data-c="43" d="M56 342Q56 428 89 500T174 615T283 681T391 705Q394 705 400 705T408 704Q499 704 569 636L582 624L612 663Q639 700 643 704Q644 704 647 704T653 705H657Q660 705 666 699V419L660 413H626Q620 419 619 430Q610 512 571 572T476 651Q457 658 426 658Q322 658 252 588Q173 509 173 342Q173 221 211 151Q232 111 263 84T328 45T384 29T428 24Q517 24 571 93T626 244Q626 251 632 257H660L666 251V236Q661 133 590 56T403 -21Q262 -21 159 83T56 342Z" transform="translate(1500,0)"></path></g><g data-mml-node="mo" transform="translate(2499.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mfrac" transform="translate(3555.6,0)"><g data-mml-node="mtext" transform="translate(220,676)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">正</text><text data-variant="normal" transform="translate(1000,0) scale(1,-1)" font-size="884px" font-family="serif">确</text><text data-variant="normal" transform="translate(2000,0) scale(1,-1)" font-size="884px" font-family="serif">排</text><text data-variant="normal" transform="translate(3000,0) scale(1,-1)" font-size="884px" font-family="serif">序</text><text data-variant="normal" transform="translate(4000,0) scale(1,-1)" font-size="884px" font-family="serif">的</text><text data-variant="normal" transform="translate(5000,0) scale(1,-1)" font-size="884px" font-family="serif">样</text><text data-variant="normal" transform="translate(6000,0) scale(1,-1)" font-size="884px" font-family="serif">本</text><text data-variant="normal" transform="translate(7000,0) scale(1,-1)" font-size="884px" font-family="serif">对</text></g><g data-mml-node="mtext" transform="translate(1720,-710)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">所</text><text data-variant="normal" transform="translate(1000,0) scale(1,-1)" font-size="884px" font-family="serif">有</text><text data-variant="normal" transform="translate(2000,0) scale(1,-1)" font-size="884px" font-family="serif">样</text><text data-variant="normal" transform="translate(3000,0) scale(1,-1)" font-size="884px" font-family="serif">本</text><text data-variant="normal" transform="translate(4000,0) scale(1,-1)" font-size="884px" font-family="serif">对</text></g><rect width="8200" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtext>AUC</mtext><mo>=</mo><mfrac><mtext>正确排序的样本对</mtext><mtext>所有样本对</mtext></mfrac></math></mjx-assistive-mml></mjx-container>
+    </span>
+  <blockquote>
 <p>延伸：GAUC，每个Group统计一个AUC，然后再取平均。</p>
 </blockquote>
-<p>手撕：<br>1、给定target和nums，找出nums中满足其和 ≥ target 的长度最小的连续子数组，并返回其长度。</p>
+<p>手撕：<br>
+1、给定target和nums，找出nums中满足其和 ≥ target 的长度最小的连续子数组，并返回其长度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法：滑动窗口（双指针）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">minSubArrayLen</span>(<span class="params">target, nums</span>):</span><br><span class="line">    <span class="comment"># 时间复杂度：O(n)，每个元素最多进/出窗口一次。</span></span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    min_len = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        total += nums[right]</span><br><span class="line">        <span class="keyword">while</span> total &gt;= target:</span><br><span class="line">            min_len = <span class="built_in">min</span>(min_len, right - left + <span class="number">1</span>)</span><br><span class="line">            total -= nums[left]</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> min_len <span class="keyword">if</span> min_len != <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>) <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>2、DIN结构</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment"># PyTorch 简化版</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ActivationUnit</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embed_dim, hidden_dim=<span class="number">36</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.fc1 = nn.Linear(embed_dim * <span class="number">3</span>, hidden_dim)</span><br><span class="line">        self.fc2 = nn.Linear(hidden_dim, <span class="number">1</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, target_emb, hist_embs</span>):</span><br><span class="line">        <span class="comment"># target_emb: [B, D]</span></span><br><span class="line">        <span class="comment"># hist_embs: [B, L, D]</span></span><br><span class="line">        B, L, D = hist_embs.shape</span><br><span class="line">        target_expand = target_emb.unsqueeze(<span class="number">1</span>).expand(-<span class="number">1</span>, L, -<span class="number">1</span>)  <span class="comment"># [B, L, D]</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 拼接: [target, hist, target * hist]</span></span><br><span class="line">        concat = torch.cat([target_expand, hist_embs, target_expand * hist_embs], dim=-<span class="number">1</span>)  <span class="comment"># [B, L, 3D]</span></span><br><span class="line">        attn_weights = self.fc2(self.relu(self.fc1(concat)))  <span class="comment"># [B, L, 1]</span></span><br><span class="line">        attn_weights = F.softmax(attn_weights, dim=<span class="number">1</span>)  <span class="comment"># [B, L, 1]</span></span><br><span class="line">        </span><br><span class="line">        weighted_hist = (attn_weights * hist_embs).<span class="built_in">sum</span>(dim=<span class="number">1</span>)  <span class="comment"># [B, D]</span></span><br><span class="line">        <span class="keyword">return</span> weighted_hist</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DIN</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, user_feat_size, item_feat_size, embed_dim=<span class="number">18</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.user_emb = nn.Embedding(user_feat_size, embed_dim)</span><br><span class="line">        self.item_emb = nn.Embedding(item_feat_size, embed_dim)</span><br><span class="line">        self.activation_unit = ActivationUnit(embed_dim)</span><br><span class="line">        self.dnn = nn.Sequential(</span><br><span class="line">            nn.Linear(embed_dim * <span class="number">2</span>, <span class="number">64</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(<span class="number">64</span>, <span class="number">1</span>),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, user_id, target_item_id, hist_item_ids</span>):</span><br><span class="line">        <span class="comment"># user_id: [B], target_item_id: [B], hist_item_ids: [B, L]</span></span><br><span class="line">        user_e = self.user_emb(user_id)  <span class="comment"># [B, D]</span></span><br><span class="line">        target_e = self.item_emb(target_item_id)  <span class="comment"># [B, D]</span></span><br><span class="line">        hist_e = self.item_emb(hist_item_ids)  <span class="comment"># [B, L, D]</span></span><br><span class="line">        </span><br><span class="line">        weighted_hist = self.activation_unit(target_e, hist_e)  <span class="comment"># [B, D]</span></span><br><span class="line">        concat = torch.cat([target_e, weighted_hist], dim=<span class="number">1</span>)  <span class="comment"># [B, 2D]</span></span><br><span class="line">        output = self.dnn(concat)  <span class="comment"># [B, 1]</span></span><br><span class="line">        <span class="keyword">return</span> output.squeeze(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="百度一面2"><a href="#百度一面2" class="headerlink" title="百度一面2"></a>百度一面2</h3><p>1、自我介绍<br>2、你觉得生成式推荐相对于传统DLRM的优势在哪里？<br>3、多路召回的融合怎么做的？<br>4、动态权重设计具体讲一下？<br>5、讲一下icf和swing以及其区别和联系<br>6、SENet的作用是什么？带来收益了吗？<br>7、transformer的结构是什么？</p>
+<h3 id="百度一面2">百度一面2</h3>
+<p>1、自我介绍<br>
+2、你觉得生成式推荐相对于传统DLRM的优势在哪里？<br>
+3、多路召回的融合怎么做的？<br>
+4、动态权重设计具体讲一下？<br>
+5、讲一下icf和swing以及其区别和联系<br>
+6、SENet的作用是什么？带来收益了吗？<br>
+7、transformer的结构是什么？</p>
 <p>答：Encoder（Embedding + PE + MHSA + FFN + LN）堆叠，推荐常用 Encoder-only</p>
 <p>8、讲一讲为什么transformer用LN而不用BN？</p>
 <p><img src="image-20260111165437167.png" alt="image-20260111165437167"></p>
@@ -318,11 +376,11 @@
 <p><img src="image-20260111165630630.png" alt="image-20260111165630630"></p>
 <p>Code: 给你一个下标从0开始、长度为n的整数排列nums。如果排列的第一个数字等于1且最后一个数字等于n,则称其为半有序排列。你可以执行多次下述操作,直到将nums变成一个半有序排列:选择nums中相邻的两个元素,然后交换它们。 返回使nums变成半有序排列所需的最小操作次数。排列是一个长度为n的整数序列,其中包含从1到n的每个数字恰好一次。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">semiOrderedPermutation</span>(<span class="params">nums</span>):</span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    pos1 = nums.index(<span class="number">1</span>)</span><br><span class="line">    posN = nums.index(n)</span><br><span class="line">    </span><br><span class="line">    swaps = pos1 + (n - <span class="number">1</span> - posN)</span><br><span class="line">    <span class="keyword">if</span> pos1 &gt; posN:</span><br><span class="line">        swaps -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> swaps</span><br></pre></td></tr></table></figure>
-<h3 id="百度二面1"><a href="#百度二面1" class="headerlink" title="百度二面1"></a>百度二面1</h3><ol>
+<h3 id="百度二面1">百度二面1</h3>
+<ol>
 <li>了解哪些二分类算法，换个问法，为什么用LGB，没用随机森林，LR，XGBoost?</li>
 </ol>
 <p>先说结论：<strong>LGB 在“精度-速度-内存-特征支持”上取得了最佳平衡</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -378,11 +436,11 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>为什么不选逻辑回归（LR）？</strong></p>
 <ul>
 <li><strong>优点</strong>：可解释性强、训练快、输出概率。</li>
-<li>致命缺点：<ul>
+<li>致命缺点：
+<ul>
 <li><strong>无法自动学习特征交叉</strong>：在推荐/广告场景中，<code>user_gender × item_category</code> 这类交叉特征极其重要，LR 必须手动构造（如 FM/FFM 才能缓解）。</li>
 <li><strong>线性假设太强</strong>：真实用户行为是非线性的（比如“价格敏感度”随收入非线性变化）。</li>
 </ul>
@@ -395,7 +453,8 @@
 <p><strong>为什么不选随机森林（RF）？</strong></p>
 <ul>
 <li><strong>优点</strong>：鲁棒、抗过拟合、无需调参。</li>
-<li>致命缺点：<ul>
+<li>致命缺点：
+<ul>
 <li><strong>Bagging 天然欠拟合</strong>：每棵树独立训练，无法像 Boosting 那样聚焦难样本，在 CTR 这种正负样本极度不均衡（1:1000）的任务中表现差。</li>
 <li><strong>无法有效利用排序信息</strong>：RF 优化的是 Gini/Entropy，而我们更关心 AUC、LogLoss —— LGB/XGB 支持自定义损失函数。</li>
 <li><strong>模型体积大</strong>：100 棵树的 RF 模型可能几百 MB，难以线上部署。</li>
@@ -408,7 +467,8 @@
 </blockquote>
 <p><strong>为什么不选 XGBoost？</strong></p>
 <ul>
-<li><p>XGBoost 很强，但 LGB 在以下方面更优：</p>
+<li>
+<p>XGBoost 很强，但 LGB 在以下方面更优：</p>
 <ul>
 <li><strong>速度</strong>：LGB 使用 <strong>直方图算法（Histogram-based）</strong>，将连续特征离散化为 bins，大幅减少计算量；XGBoost 默认用精确贪心算法（Exact Greedy），每轮遍历所有分裂点。</li>
 <li><strong>内存</strong>：直方图只需存储 bin 索引，内存占用比 XGBoost 低 5～10 倍。</li>
@@ -420,6 +480,8 @@
 </ul>
 <blockquote>
 <p>📌 <strong>实测数据</strong>：在千万级样本、千维特征的广告数据上，LGB 训练速度通常是 XGBoost 的 <strong>3～5 倍</strong>，AUC 相当或略高。</p>
+</blockquote>
+<blockquote>
 <p>✅ <strong>结论</strong>：XGBoost 和 LGB 精度接近，但 LGB <strong>更快、更省内存、更易用</strong>，工业首选。</p>
 </blockquote>
 <p><strong>为什么 LGB 特别适合搜广推的二分类任务？</strong></p>
@@ -431,7 +493,6 @@
 <li><strong>特征工程友好</strong>：支持缺失值、自动处理类别变量，减少 pipeline 复杂度。</li>
 </ol>
 <p><strong>什么时候用其他算法？</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -468,12 +529,10 @@
 </tr>
 </tbody>
 </table>
-</div>
-<ol>
+<ol start="2">
 <li>XGBoost和LGB区别；并行化的差别；属于boosting还是bagging?</li>
 </ol>
 <p><strong>XGBoost 和 LightGBM（LGB）的核心区别</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -515,18 +574,19 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>属于 Boosting 还是 Bagging？</strong></p>
 <p>✅ 两者都属于 <strong>Boosting</strong>！</p>
 <ul>
-<li><p>Boosting 特点：</p>
+<li>
+<p>Boosting 特点：</p>
 <ul>
 <li>串行训练：每棵树学习前序模型的<strong>残差（负梯度）</strong></li>
 <li>关注难样本：通过加权或梯度放大错误样本的影响</li>
 <li>目标：<strong>降低偏差（Bias）</strong></li>
 </ul>
 </li>
-<li><p>Bagging 特点</p>
+<li>
+<p>Bagging 特点</p>
 <p>（如 Random Forest）：</p>
 <ul>
 <li>并行训练：每棵树独立，基于 bootstrap 抽样</li>
@@ -537,10 +597,9 @@
 <blockquote>
 <p>📌 XGBoost 和 LGB 都是 <strong>Gradient Boosting Decision Tree (GBDT)</strong> 的高效实现，本质是 <strong>加法模型 + 前向分步优化 + 梯度下降</strong>。</p>
 </blockquote>
-<ol>
+<ol start="3">
 <li>深度学习的算法，排序方面(提到FM)；FM的目标函数和时间复杂度</li>
 </ol>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -582,18 +641,19 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p><img src="image-20260111171919808.png" alt="image-20260111171919808"></p>
 <p><img src="image-20260111171812165.png" alt="image-20260111171812165"></p>
-<ol>
-<li><p>召回知道什么；知道图模型吗，图召回</p>
+<ol start="4">
+<li>
+<p>召回知道什么；知道图模型吗，图召回</p>
 </li>
-<li><p>word2vec，了解deep walk吗</p>
+<li>
+<p>word2vec，了解deep walk吗</p>
 </li>
-<li><p>用户行为序列相关的深度学习算法(提到DIN)；DIN的实现原理，怎么学出那个位置的?(以为和Transformer一样。。)</p>
+<li>
+<p>用户行为序列相关的深度学习算法(提到DIN)；DIN的实现原理，怎么学出那个位置的?(以为和Transformer一样。。)</p>
 </li>
 </ol>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -636,20 +696,22 @@
 </tr>
 </tbody>
 </table>
-</div>
 <blockquote>
-<p>🔑 <strong>关键演进</strong>：<br><strong>静态兴趣（Pooling） → 动态兴趣（DIN） → 兴趣演化（DIEN） → 序列结构感知（BST）</strong></p>
+<p>🔑 <strong>关键演进</strong>：<br>
+<strong>静态兴趣（Pooling） → 动态兴趣（DIN） → 兴趣演化（DIEN） → 序列结构感知（BST）</strong></p>
 </blockquote>
 <p><strong>DIN实现原理</strong></p>
 <p><img src="image-20260111172335999.png" alt="image-20260111172335999"></p>
 <p><strong>DIN 并不直接“学位置”，而是学“相关性权重”</strong>。</p>
 <p>详细解释：</p>
 <ol>
-<li><p>没有显式位置编码</p>
+<li>
+<p>没有显式位置编码</p>
 <p>DIN 不关心行为发生的时间顺序或绝对位置（如第1个、第50个），只关心语义相关性</p>
 <p>。即使“手机”出现在序列末尾，“手机壳”仍能将其激活。</p>
 </li>
-<li><p>权重由 Activation Unit 端到端学习</p>
+<li>
+<p>权重由 Activation Unit 端到端学习</p>
 <ul>
 <li>输入：候选物品 embedding <code>a</code> + 历史行为 embedding <code>hi</code></li>
 <li>网络：2层 MLP（带 ReLU）</li>
@@ -657,7 +719,8 @@
 <li>通过 <strong>CTR 预估的全局损失函数（LogLoss）反向传播</strong>，自动调整权重</li>
 </ul>
 </li>
-<li><p>训练目标驱动权重学习</p>
+<li>
+<p>训练目标驱动权重学习</p>
 <ul>
 <li>如果某次曝光中，用户点击了“手机壳”，而历史中有“手机”</li>
 <li>损失函数会促使模型<strong>增大“手机”对应的 α_i</strong></li>
@@ -674,8 +737,8 @@
 <blockquote>
 <p>💡 <strong>本质</strong>：DIN 的 attention 是 <strong>target-aware 的 soft selection</strong>，不是基于位置的 hard selection。</p>
 </blockquote>
-<ol>
-<li>Transfomer的Encorder-Decorder过程，展开讲Encorder怎么实现 </li>
+<ol start="7">
+<li>Transfomer的Encorder-Decorder过程，展开讲Encorder怎么实现</li>
 </ol>
 <p><strong>整体框架回顾：</strong></p>
 <p>Transformer Encoder 由 <strong>N 个相同层（如 N=6）堆叠而成</strong>，每层包含两个核心子模块：</p>
@@ -685,25 +748,43 @@
 </ol>
 <p>每个子模块后都接 <strong>残差连接（Residual Connection） + Layer Normalization（LN）</strong></p>
 <blockquote>
-<p>📌 数据流：<br><code>Input → [MHSA → Add&amp;Norm → FFN → Add&amp;Norm] × N → Output</code></p>
+<p>📌 数据流：<br>
+<code>Input → [MHSA → Add&amp;Norm → FFN → Add&amp;Norm] × N → Output</code></p>
 </blockquote>
-<p>LC 15三数之和 </p>
+<p>LC 15三数之和</p>
 <p>LC 84柱状图中最大的矩形</p>
-<h3 id="百度二面2"><a href="#百度二面2" class="headerlink" title="百度二面2"></a>百度二面2</h3><p>1、自我介绍<br>2、HSTU用作encoder还是decoder？<br>3、传统DLRM与生成式推荐的区别？<br>4、SASRec了解吗，讲一下？<br>5、Transformer 的encoder和decoder的区别？<br>6、decoder的mask是怎么做的？<br>7、HSTU的mask是怎么做的？<br>8、HSTU 与Transformer的区别？<br>9、了解过HSTU 源码中召回和排序是怎么做的吗？</p>
-<p>Code:<br>1、交换链表两两之间的节点，分析时空复杂度。<br>2、三数之和。</p>
-<h3 id="得物一面"><a href="#得物一面" class="headerlink" title="得物一面"></a>得物一面</h3><ol>
-<li><p><strong>自我介绍</strong>，并简要概括科研经历、项目经历都做了什么。</p>
+<h3 id="百度二面2">百度二面2</h3>
+<p>1、自我介绍<br>
+2、HSTU用作encoder还是decoder？<br>
+3、传统DLRM与生成式推荐的区别？<br>
+4、SASRec了解吗，讲一下？<br>
+5、Transformer 的encoder和decoder的区别？<br>
+6、decoder的mask是怎么做的？<br>
+7、HSTU的mask是怎么做的？<br>
+8、HSTU 与Transformer的区别？<br>
+9、了解过HSTU 源码中召回和排序是怎么做的吗？</p>
+<p>Code:<br>
+1、交换链表两两之间的节点，分析时空复杂度。<br>
+2、三数之和。</p>
+<h3 id="得物一面">得物一面</h3>
+<ol>
+<li>
+<p><strong>自我介绍</strong>，并简要概括科研经历、项目经历都做了什么。</p>
 </li>
-<li><p>（硕士做的方向）具体做了什么，用什么样的方法去实现的；网络架构？是否在工业界有应用？</p>
+<li>
+<p>（硕士做的方向）具体做了什么，用什么样的方法去实现的；网络架构？是否在工业界有应用？</p>
 </li>
-<li><p>这几个项目里你认为实现起来最大的困难是什么，最后怎么解决的？</p>
+<li>
+<p>这几个项目里你认为实现起来最大的困难是什么，最后怎么解决的？</p>
 </li>
-<li><p><strong>做题目：</strong></p>
+<li>
+<p><strong>做题目：</strong></p>
 <p>4.1. 手撕逻辑回归（不能调库，纯手搓）；假设单个样本X=[x1, x2…xn]，标签Y=0 or 1。</p>
 <p>4.2. Leetcode原题，删除重复区间的最小数目。</p>
 </li>
 </ol>
-<h3 id="得物二面"><a href="#得物二面" class="headerlink" title="得物二面"></a>得物二面</h3><p><strong>1. 深度神经网络训练经验</strong></p>
+<h3 id="得物二面">得物二面</h3>
+<p><strong>1. 深度神经网络训练经验</strong></p>
 <ul>
 <li>有没有训练过深度神经网络？</li>
 <li>输入是什么，任务是什么？</li>
@@ -729,7 +810,8 @@
 <li>52张扑克，求不放回抽10张，正好有4张A的概率。</li>
 <li>不放回抽，抽到第四张A时抽数的期望。</li>
 </ul>
-<h3 id="美团一面"><a href="#美团一面" class="headerlink" title="美团一面"></a>美团一面</h3><ol>
+<h3 id="美团一面">美团一面</h3>
+<ol>
 <li>数值型特征处理方式有哪些</li>
 <li>介绍一下CGC, PLE和MMoE的区别</li>
 <li>多任务loss平衡方式</li>
@@ -743,13 +825,45 @@
 <li>为什么rqvae没有像vae一样对分布进行重建而是采用残差量化的方式还原数据</li>
 <li>手撕二叉树最大路径和</li>
 </ol>
-<h3 id="Soul日常实习"><a href="#Soul日常实习" class="headerlink" title="Soul日常实习"></a>Soul日常实习</h3><p>1、自我介绍<br>2、AUC的物理含义是什么？<br>3、AUC具体怎么计算？若给定roc曲线横轴，如何得到纵轴对应值？<br>4、你用到的DSSM的损失函数是什么？优化目标是什么？<br>5、是否了解NCE这个损失函数？<br>6、SENet的作用是什么？<br>7、SENet如何让DSSM的特征交叉做得更好？<br>8、DSSM在训练时的正负样本是如何选取的？</p>
-<p>Code:<br>实现以下函数：<br>def drop_out(X,rate,mode=‘training’):<br>追问：<br>1、代码中分母的1-rate的作用是什么？<br>2、mode有哪几种取值？</p>
-<h3 id="小红书一面"><a href="#小红书一面" class="headerlink" title="小红书一面"></a>小红书一面</h3><p>1、召回在整个推荐链路中的作用和必要性？<br>2、多路召回融合的动态权重设计，手动还是自适应调整？<br>3、规则召回是怎么做的，用到哪些规则？<br>4、cf的召回过程？<br>5、swing与cf的区别，这两者存在什么弊端<br>6、怎么实现u-u-i的召回？<br>7、多目标排序算法有了解吗？讲一下MMoE<br>8、序列建模有了解吗？<br>9、对实习有什么想法？</p>
+<h3 id="Soul日常实习">Soul日常实习</h3>
+<p>1、自我介绍<br>
+2、AUC的物理含义是什么？<br>
+3、AUC具体怎么计算？若给定roc曲线横轴，如何得到纵轴对应值？<br>
+4、你用到的DSSM的损失函数是什么？优化目标是什么？<br>
+5、是否了解NCE这个损失函数？<br>
+6、SENet的作用是什么？<br>
+7、SENet如何让DSSM的特征交叉做得更好？<br>
+8、DSSM在训练时的正负样本是如何选取的？</p>
+<p>Code:<br>
+实现以下函数：<br>
+def drop_out(X,rate,mode=‘training’):<br>
+追问：<br>
+1、代码中分母的1-rate的作用是什么？<br>
+2、mode有哪几种取值？</p>
+<h3 id="小红书一面">小红书一面</h3>
+<p>1、召回在整个推荐链路中的作用和必要性？<br>
+2、多路召回融合的动态权重设计，手动还是自适应调整？<br>
+3、规则召回是怎么做的，用到哪些规则？<br>
+4、cf的召回过程？<br>
+5、swing与cf的区别，这两者存在什么弊端<br>
+6、怎么实现u-u-i的召回？<br>
+7、多目标排序算法有了解吗？讲一下MMoE<br>
+8、序列建模有了解吗？<br>
+9、对实习有什么想法？</p>
 <p>Code:最长递增子序列</p>
-<h3 id="B站一面"><a href="#B站一面" class="headerlink" title="B站一面"></a>B站一面</h3><p>1、自我介绍<br>2、Transformer 的结构<br>3、DIN和Transformer 的注意力机制区别<br>4、softmax表达式，以及导数推导<br>5、推荐场景下的连续值，离散值的处理<br>6、推荐系统的链路<br>7、是否了解DIN、SIM用于embedding<br>8、从模型角度介绍特征交叉<br>9、正负样本的选取方法以及对应的优缺点</p>
+<h3 id="B站一面">B站一面</h3>
+<p>1、自我介绍<br>
+2、Transformer 的结构<br>
+3、DIN和Transformer 的注意力机制区别<br>
+4、softmax表达式，以及导数推导<br>
+5、推荐场景下的连续值，离散值的处理<br>
+6、推荐系统的链路<br>
+7、是否了解DIN、SIM用于embedding<br>
+8、从模型角度介绍特征交叉<br>
+9、正负样本的选取方法以及对应的优缺点</p>
 <p>Code ：滑动窗口内的最大值</p>
-<h3 id="快手一面"><a href="#快手一面" class="headerlink" title="快手一面"></a>快手一面</h3><ol>
+<h3 id="快手一面">快手一面</h3>
+<ol>
 <li>混淆矩阵、准确率、召回率</li>
 <li>生成对抗网络介绍一下</li>
 <li>生成器和判别器是不是一起迭代</li>
@@ -759,14 +873,16 @@
 <li>特征交叉的好处</li>
 <li>介绍一下DIN</li>
 </ol>
-<h3 id="快手二面"><a href="#快手二面" class="headerlink" title="快手二面"></a>快手二面</h3><ol>
+<h3 id="快手二面">快手二面</h3>
+<ol>
 <li>手撕：梯度下降求正数的算术平方根</li>
 <li>对召回模型了解：双塔模型、TDM模型</li>
 <li>YouTubeDNN有了embedding后怎么用faiss进行召回</li>
 <li>召回和排序阶段一般看什么指标</li>
 <li>召回排序各阶段正负样本</li>
 </ol>
-<h3 id="滴滴一面"><a href="#滴滴一面" class="headerlink" title="滴滴一面"></a><strong>滴滴一面</strong></h3><ol>
+<h3 id="滴滴一面"><strong>滴滴一面</strong></h3>
+<ol>
 <li>SQL的数据倾斜</li>
 <li>介绍一下XGboost和LightGBM优化了GBDT什么</li>
 <li>分类树和回归树的区别</li>
@@ -774,7 +890,8 @@
 <li>AUC物理意义</li>
 <li>介绍一下Transformer</li>
 </ol>
-<h3 id="滴滴二面"><a href="#滴滴二面" class="headerlink" title="滴滴二面"></a>滴滴二面</h3><ol>
+<h3 id="滴滴二面">滴滴二面</h3>
+<ol>
 <li>手撕带掩码的多头注意力机制</li>
 <li>为什么要除以根号d</li>
 <li>permute和transpose函数区别</li>
@@ -783,7 +900,8 @@
 <li>XGboost如何做的缺失值处理</li>
 <li>XGboost防止过拟合怎么做</li>
 </ol>
-<h3 id="小米二面"><a href="#小米二面" class="headerlink" title="小米二面"></a>小米二面</h3><ol>
+<h3 id="小米二面">小米二面</h3>
+<ol>
 <li>手撕：字符串最长公共前缀</li>
 <li>数据分析是怎么思考的</li>
 <li>介绍一下Transformer</li>
@@ -793,43 +911,51 @@
 <li>点击长度较长如何处理嵌入维度。直接使用独热编码会导致维度爆炸，怎么处理</li>
 <li>DIN模型</li>
 </ol>
-<h3 id="字节跳动AML筋斗云广告大模型面经"><a href="#字节跳动AML筋斗云广告大模型面经" class="headerlink" title="字节跳动AML筋斗云广告大模型面经"></a>字节跳动AML筋斗云广告大模型面经</h3><h4 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h4><p>项目相关<br>讲讲设计的初衷，模型结构<br>生成式相关问题<br>• 为什么会想在重排做生成式<br>• 如果是做生成式召回应该对模型结构怎么修改<br>召回相关问题<br>• 召回怎么构造负样本<br>• 需要热度纠偏吗，减的那个概率和什么有关<br>技术细节<br>• 稀疏MOE怎么做的<br>• beamsearch怎么做的<br>你觉得这个项目遇到的最大的难点是什么<br>方案设计与指标提升上的一些问题</p>
-<p>八股<br>大模型了解多少，强化学习了解什么<br>DPO的全称是什么，公式是什么，直接体现在哪里<br>与PPO对比<br>归一化方法<br>• 常用的归一化方法有哪些<br>• 讲讲RMSNorm<br>AUC<br>• auc的定义<br>• 从样本里随机去掉一些负样本，Auc怎么变<br>优化器<br>• 讲一讲常用的优化器<br>• sgd是什么，Adam相对于sgd改进了什么<br>位置编码<br>• 正余弦位置编码的公式<br>手撕<br>• 计算逆序对数量<br>• 多头自注意力</p>
-<h4 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h4><p>项目介绍<br>训练样本大概多少条<br>用户反馈怎么做的<br>MOE激活的分布，怎么确定是MOE的效果而不是单纯ffn参数量增大的效果<br>MOE稀疏激活相关问题<br>beamsearch多少条<br>有考虑用别的强化学习的方法吗<br>dpo的公式是什么<br>grpo了解吗<br>kvcache怎么做的，了解大模型中别的提高效率的办法吗<br>知道MTP吗</p>
-<p>手撕transformer并计算flops和内存开销（给了10min，没写完就直接反问了）<br>反问面试官讲了下组里做的一些内容，以及组里只探索难度大的一些前沿方向。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://spongebobyyb.github.io">SpongeBob</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://spongebobyyb.github.io/2026/01/10/%E6%90%9C%E5%B9%BF%E6%8E%A8%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">https://spongebobyyb.github.io/2026/01/10/%E6%90%9C%E5%B9%BF%E6%8E%A8%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://spongebobyyb.github.io" target="_blank">SpongeBob's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a><a class="post-meta__tags" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">推荐系统</a></div><div class="post_share"><div class="social-share" data-image="/img/new.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/01/12/Transformer%E5%B8%B8%E8%A7%81%E5%85%AB%E8%82%A1%E5%8F%8A%E6%89%8B%E6%92%95/" title="Transformer常见八股及手撕"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Transformer常见八股及手撕</div></div></a></div><div class="next-post pull-right"><a href="/2026/01/09/Python%E4%B9%8BACM%E8%BE%93%E5%85%A5/" title="Python之ACM输入"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python之ACM输入</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/21/AI-Agent%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/" title="AI_Agent面经总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-21</div><div class="title">AI_Agent面经总结</div></div></a></div><div><a href="/2025/12/21/FTRL%E7%AE%97%E6%B3%95%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" title="FTRL算法的数学原理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-21</div><div class="title">FTRL算法的数学原理</div></div></a></div><div><a href="/2025/12/29/%E5%A4%A9%E6%B1%A0%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB-1/" title="天池新闻推荐代码解读_1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-29</div><div class="title">天池新闻推荐代码解读_1</div></div></a></div><div><a href="/2025/12/31/%E5%A4%A9%E6%B1%A0%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB-2/" title="天池新闻推荐代码解读_2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-31</div><div class="title">天池新闻推荐代码解读_2</div></div></a></div><div><a href="/2026/01/25/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/" title="推荐系统八股总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-25</div><div class="title">推荐系统八股总结</div></div></a></div><div><a href="/2025/02/16/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="推荐系统学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-16</div><div class="title">推荐系统学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/new.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SpongeBob</div><div class="author-info__description">SpongeBob 的技术博客，记录推荐系统、深度学习、前端开发的学习笔记与面试总结</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/SPONGEBOByyb"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">常见面试问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LightGBM%E5%92%8CXBoost%E7%9A%84%E8%81%94%E7%B3%BB%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%B3%E5%88%B0Boosting%E5%92%8CBagging%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">LightGBM和XBoost的联系与区别（可以引申到Boosting和Bagging）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%87%E6%8B%9F%E5%90%88%EF%BC%9F%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%B3%E5%88%B0L1-L2%E6%AD%A3%E5%88%99%E5%8C%96%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shared-bottom%E3%80%81MMoE%E3%80%81PLE%E7%9A%84%E8%81%94%E7%B3%BB%E4%BB%A5%E5%8F%8A%E6%BC%94%E8%AE%B2%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">Shared bottom、MMoE、PLE的联系以及演讲过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1"><span class="toc-number">2.</span> <span class="toc-text">高频八股</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">搜广推最高频八股（一）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">搜广推最高频八股（二）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%B8%89%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">搜广推最高频八股（三）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E5%9B%9B%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">搜广推最高频八股（四）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%A2%E7%BB%8F"><span class="toc-number">3.</span> <span class="toc-text">自己的面经</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E9%9D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">百度推荐算法一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E6%90%9CNLP%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2"><span class="toc-number">3.2.</span> <span class="toc-text">百度推广搜NLP算法工程师实习生一面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%AB%E4%BA%BA%E7%9A%84%E9%9D%A2%E7%BB%8F"><span class="toc-number">4.</span> <span class="toc-text">别人的面经</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%80%E9%9D%A21"><span class="toc-number">4.1.</span> <span class="toc-text">百度一面1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%80%E9%9D%A22"><span class="toc-number">4.2.</span> <span class="toc-text">百度一面2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8C%E9%9D%A21"><span class="toc-number">4.3.</span> <span class="toc-text">百度二面1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8C%E9%9D%A22"><span class="toc-number">4.4.</span> <span class="toc-text">百度二面2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E7%89%A9%E4%B8%80%E9%9D%A2"><span class="toc-number">4.5.</span> <span class="toc-text">得物一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E7%89%A9%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.6.</span> <span class="toc-text">得物二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E5%9B%A2%E4%B8%80%E9%9D%A2"><span class="toc-number">4.7.</span> <span class="toc-text">美团一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Soul%E6%97%A5%E5%B8%B8%E5%AE%9E%E4%B9%A0"><span class="toc-number">4.8.</span> <span class="toc-text">Soul日常实习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BA%A2%E4%B9%A6%E4%B8%80%E9%9D%A2"><span class="toc-number">4.9.</span> <span class="toc-text">小红书一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%AB%99%E4%B8%80%E9%9D%A2"><span class="toc-number">4.10.</span> <span class="toc-text">B站一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%89%8B%E4%B8%80%E9%9D%A2"><span class="toc-number">4.11.</span> <span class="toc-text">快手一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%89%8B%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.12.</span> <span class="toc-text">快手二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E6%BB%B4%E4%B8%80%E9%9D%A2"><span class="toc-number">4.13.</span> <span class="toc-text">滴滴一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E6%BB%B4%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.14.</span> <span class="toc-text">滴滴二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%B1%B3%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.15.</span> <span class="toc-text">小米二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8AML%E7%AD%8B%E6%96%97%E4%BA%91%E5%B9%BF%E5%91%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%9D%A2%E7%BB%8F"><span class="toc-number">4.16.</span> <span class="toc-text">字节跳动AML筋斗云广告大模型面经</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2"><span class="toc-number">4.16.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.16.2.</span> <span class="toc-text">二面</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/15/Hexo%E5%8D%9A%E5%AE%A2%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E4%B8%8E%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/" title="Hexo博客故障排查与站点配置">Hexo博客故障排查与站点配置</a><time datetime="2026-10-15T13:40:26.000Z" title="发表于 2026-10-15 21:40:26">2026-10-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/AI-Agent%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/" title="AI_Agent面经总结">AI_Agent面经总结</a><time datetime="2026-03-21T11:41:00.000Z" title="发表于 2026-03-21 19:41:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/04/hot100%E5%BF%83%E5%BE%97/" title="hot100心得">hot100心得</a><time datetime="2026-02-04T12:04:50.000Z" title="发表于 2026-02-04 20:04:50">2026-02-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/25/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/" title="推荐系统八股总结">推荐系统八股总结</a><time datetime="2026-01-25T07:44:07.000Z" title="发表于 2026-01-25 15:44:07">2026-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/23/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Git学习笔记">Git学习笔记</a><time datetime="2026-01-23T09:32:52.000Z" title="发表于 2026-01-23 17:32:52">2026-01-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By SpongeBob</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      tags: 'ams'
-    },
-    chtml: {
-      scale: 1.1
-    },
-    options: {
-      renderActions: {
-        findScript: [10, doc => {
-          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-            const display = !!node.type.match(/; *mode=display/)
-            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-            const text = document.createTextNode('')
-            node.parentNode.replaceChild(text, node)
-            math.start = {node: text, delim: '', n: 0}
-            math.end = {node: text, delim: '', n: 0}
-            doc.math.push(math)
-          }
-        }, '']
-      }
-    }
-  }
-  
-  const script = document.createElement('script')
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
-  script.id = 'MathJax-script'
-  script.async = true
-  document.head.appendChild(script)
-} else {
-  MathJax.startup.document.state(0)
-  MathJax.texReset()
-  MathJax.typesetPromise()
-}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<h3 id="字节跳动AML筋斗云广告大模型面经">字节跳动AML筋斗云广告大模型面经</h3>
+<h4 id="一面">一面</h4>
+<p>项目相关<br>
+讲讲设计的初衷，模型结构<br>
+生成式相关问题<br>
+• 为什么会想在重排做生成式<br>
+• 如果是做生成式召回应该对模型结构怎么修改<br>
+召回相关问题<br>
+• 召回怎么构造负样本<br>
+• 需要热度纠偏吗，减的那个概率和什么有关<br>
+技术细节<br>
+• 稀疏MOE怎么做的<br>
+• beamsearch怎么做的<br>
+你觉得这个项目遇到的最大的难点是什么<br>
+方案设计与指标提升上的一些问题</p>
+<p>八股<br>
+大模型了解多少，强化学习了解什么<br>
+DPO的全称是什么，公式是什么，直接体现在哪里<br>
+与PPO对比<br>
+归一化方法<br>
+• 常用的归一化方法有哪些<br>
+• 讲讲RMSNorm<br>
+AUC<br>
+• auc的定义<br>
+• 从样本里随机去掉一些负样本，Auc怎么变<br>
+优化器<br>
+• 讲一讲常用的优化器<br>
+• sgd是什么，Adam相对于sgd改进了什么<br>
+位置编码<br>
+• 正余弦位置编码的公式<br>
+手撕<br>
+• 计算逆序对数量<br>
+• 多头自注意力</p>
+<h4 id="二面">二面</h4>
+<p>项目介绍<br>
+训练样本大概多少条<br>
+用户反馈怎么做的<br>
+MOE激活的分布，怎么确定是MOE的效果而不是单纯ffn参数量增大的效果<br>
+MOE稀疏激活相关问题<br>
+beamsearch多少条<br>
+有考虑用别的强化学习的方法吗<br>
+dpo的公式是什么<br>
+grpo了解吗<br>
+kvcache怎么做的，了解大模型中别的提高效率的办法吗<br>
+知道MTP吗</p>
+<p>手撕transformer并计算flops和内存开销（给了10min，没写完就直接反问了）<br>
+反问面试官讲了下组里做的一些内容，以及组里只探索难度大的一些前沿方向。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://spongebobyyb.github.io">SpongeBob</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://spongebobyyb.github.io/2026/01/10/%E6%90%9C%E5%B9%BF%E6%8E%A8%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">https://spongebobyyb.github.io/2026/01/10/%E6%90%9C%E5%B9%BF%E6%8E%A8%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://spongebobyyb.github.io" target="_blank">SpongeBob's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a><a class="post-meta__tags" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">推荐系统</a></div><div class="post_share"><div class="social-share" data-image="/img/new.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/01/12/Transformer%E5%B8%B8%E8%A7%81%E5%85%AB%E8%82%A1%E5%8F%8A%E6%89%8B%E6%92%95/" title="Transformer常见八股及手撕"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Transformer常见八股及手撕</div></div></a></div><div class="next-post pull-right"><a href="/2026/01/09/Python%E4%B9%8BACM%E8%BE%93%E5%85%A5/" title="Python之ACM输入"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python之ACM输入</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/21/AI-Agent%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/" title="AI_Agent面经总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-21</div><div class="title">AI_Agent面经总结</div></div></a></div><div><a href="/2025/12/21/FTRL%E7%AE%97%E6%B3%95%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" title="FTRL算法的数学原理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-21</div><div class="title">FTRL算法的数学原理</div></div></a></div><div><a href="/2026/01/25/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/" title="推荐系统八股总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-25</div><div class="title">推荐系统八股总结</div></div></a></div><div><a href="/2025/12/29/%E5%A4%A9%E6%B1%A0%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB-1/" title="天池新闻推荐代码解读_1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-29</div><div class="title">天池新闻推荐代码解读_1</div></div></a></div><div><a href="/2025/02/16/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="推荐系统学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-16</div><div class="title">推荐系统学习笔记</div></div></a></div><div><a href="/2025/12/31/%E5%A4%A9%E6%B1%A0%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB-2/" title="天池新闻推荐代码解读_2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-31</div><div class="title">天池新闻推荐代码解读_2</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/new.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SpongeBob</div><div class="author-info__description">SpongeBob 的技术博客，记录推荐系统、深度学习、前端开发的学习笔记与面试总结</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/SPONGEBOByyb"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">常见面试问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LightGBM%E5%92%8CXGBoost%E7%9A%84%E8%81%94%E7%B3%BB%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%B3%E5%88%B0Boosting%E5%92%8CBagging%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">LightGBM和XGBoost的联系与区别（可以引申到Boosting和Bagging）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%87%E6%8B%9F%E5%90%88%EF%BC%9F%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%B3%E5%88%B0L1-L2%E6%AD%A3%E5%88%99%E5%8C%96%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">如何解决过拟合？（可以引申到L1&#x2F;L2正则化的区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shared-bottom%E3%80%81MMoE%E3%80%81PLE%E7%9A%84%E8%81%94%E7%B3%BB%E4%BB%A5%E5%8F%8A%E6%BC%94%E8%BF%9B%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">Shared bottom、MMoE、PLE的联系以及演进过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1"><span class="toc-number">2.</span> <span class="toc-text">高频八股</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">搜广推最高频八股（一）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">搜广推最高频八股（二）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E4%B8%89%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">搜广推最高频八股（三）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%AB%E8%82%A1%EF%BC%88%E5%9B%9B%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">搜广推最高频八股（四）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%A2%E7%BB%8F"><span class="toc-number">3.</span> <span class="toc-text">自己的面经</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E9%9D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">百度推荐算法一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E6%90%9CNLP%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2"><span class="toc-number">3.2.</span> <span class="toc-text">百度推广搜NLP算法工程师实习生一面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%AB%E4%BA%BA%E7%9A%84%E9%9D%A2%E7%BB%8F"><span class="toc-number">4.</span> <span class="toc-text">别人的面经</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%80%E9%9D%A21"><span class="toc-number">4.1.</span> <span class="toc-text">百度一面1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%80%E9%9D%A22"><span class="toc-number">4.2.</span> <span class="toc-text">百度一面2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8C%E9%9D%A21"><span class="toc-number">4.3.</span> <span class="toc-text">百度二面1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8C%E9%9D%A22"><span class="toc-number">4.4.</span> <span class="toc-text">百度二面2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E7%89%A9%E4%B8%80%E9%9D%A2"><span class="toc-number">4.5.</span> <span class="toc-text">得物一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E7%89%A9%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.6.</span> <span class="toc-text">得物二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E5%9B%A2%E4%B8%80%E9%9D%A2"><span class="toc-number">4.7.</span> <span class="toc-text">美团一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Soul%E6%97%A5%E5%B8%B8%E5%AE%9E%E4%B9%A0"><span class="toc-number">4.8.</span> <span class="toc-text">Soul日常实习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BA%A2%E4%B9%A6%E4%B8%80%E9%9D%A2"><span class="toc-number">4.9.</span> <span class="toc-text">小红书一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%AB%99%E4%B8%80%E9%9D%A2"><span class="toc-number">4.10.</span> <span class="toc-text">B站一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%89%8B%E4%B8%80%E9%9D%A2"><span class="toc-number">4.11.</span> <span class="toc-text">快手一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%89%8B%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.12.</span> <span class="toc-text">快手二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E6%BB%B4%E4%B8%80%E9%9D%A2"><span class="toc-number">4.13.</span> <span class="toc-text">滴滴一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E6%BB%B4%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.14.</span> <span class="toc-text">滴滴二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%B1%B3%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.15.</span> <span class="toc-text">小米二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8AML%E7%AD%8B%E6%96%97%E4%BA%91%E5%B9%BF%E5%91%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%9D%A2%E7%BB%8F"><span class="toc-number">4.16.</span> <span class="toc-text">字节跳动AML筋斗云广告大模型面经</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2"><span class="toc-number">4.16.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2"><span class="toc-number">4.16.2.</span> <span class="toc-text">二面</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/15/Hexo%E5%8D%9A%E5%AE%A2%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E4%B8%8E%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/" title="Hexo博客故障排查与站点配置">Hexo博客故障排查与站点配置</a><time datetime="2026-10-15T13:40:26.000Z" title="发表于 2026-10-15 21:40:26">2026-10-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/AI-Agent%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/" title="AI_Agent面经总结">AI_Agent面经总结</a><time datetime="2026-03-21T11:41:00.000Z" title="发表于 2026-03-21 19:41:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/04/hot100%E5%BF%83%E5%BE%97/" title="hot100心得">hot100心得</a><time datetime="2026-02-04T12:04:50.000Z" title="发表于 2026-02-04 20:04:50">2026-02-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/25/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/" title="推荐系统八股总结">推荐系统八股总结</a><time datetime="2026-01-25T07:44:07.000Z" title="发表于 2026-01-25 15:44:07">2026-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/23/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Git学习笔记">Git学习笔记</a><time datetime="2026-01-23T09:32:52.000Z" title="发表于 2026-01-23 17:32:52">2026-01-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By SpongeBob</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
