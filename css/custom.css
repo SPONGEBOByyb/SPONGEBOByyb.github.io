@@ -403,15 +403,135 @@ a { transition: color .2s ease; }
   color: #c41a16;
 }
 :root[data-theme="dark"] #article-container :not(pre) > code { color: #ff7b72; }
+/* 只给代码本身设等宽字体；不能用 figure.highlight *，否则工具栏图标（字体图标）会变成问号 */
+#article-container figure.highlight :is(pre, code, .line, .gutter) {
+  font-family: var(--ap-mono) !important;
+}
+
+/* ---------- 代码块：深色 Mac 窗口风格 ----------
+ * 配合 _config.butterfly.yml 的 highlight_theme: mac
+ * 工具栏：左边红黄绿三个点，右边 [语言] [复制] [全屏] [折叠]
+ * 全屏按钮由 source/js/code-tools.js 添加 */
+:root,
+:root[data-theme="dark"] {
+  --hl-bg: #2b2b2b;
+  --hltools-bg: #2b2b2b;
+  --hltools-color: #c9c9c9;
+  --hlnumber-bg: #2b2b2b;
+  --hlnumber-color: rgba(255, 255, 255, .3);
+  --hlscrollbar-bg: #444;
+}
 #article-container figure.highlight {
-  border-radius: 12px;
-  box-shadow: none;
-  overflow: hidden;
+  margin: 1.2em 0 1.6em;
+  border-radius: 10px;
+  background: var(--hl-bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
 }
-#article-container figure.highlight,
-#article-container figure.highlight * {
-  font-family: var(--ap-mono);
+:root[data-theme="dark"] #article-container figure.highlight {
+  box-shadow: 0 0 0 1px #3a3a3c, 0 8px 24px rgba(0, 0, 0, .5);
 }
+
+/* 隐藏行号（主题的复制功能依赖行号表格结构，所以用 CSS 隐藏而不是在配置里关掉） */
+#article-container figure.highlight .gutter { display: none; }
+#article-container figure.highlight table td.code { padding-left: 0; }
+
+/* 代码区 */
+#article-container figure.highlight pre {
+  padding: .9em 1.2em 1.1em;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+/* 工具栏 */
+#article-container figure.highlight .highlight-tools {
+  justify-content: flex-end;
+  gap: 6px;
+  height: 2.7em;
+  padding: 0 10px 0 80px;   /* 左边留给三个圆点 */
+  font-size: 12px;
+}
+/* 三个圆点稍微大一点、垂直居中 */
+#article-container figure.highlight .highlight-tools::after {
+  left: 14px;
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}
+
+/* 右侧的小按钮：语言、复制、全屏，统一成灰色小框 */
+#article-container figure.highlight .highlight-tools :is(.code-lang, .copy-button, .hl-fullscreen-btn) {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .1);
+  color: #c9c9c9;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease;
+}
+#article-container figure.highlight .highlight-tools .code-lang { order: 1; cursor: default; }
+/* "复制成功"提示：不占位置，显示在三个圆点右边 */
+#article-container figure.highlight .highlight-tools .copy-notice {
+  position: absolute;
+  left: 80px;
+  right: auto;
+  font-size: 12px;
+  color: #8fd18f;
+  pointer-events: none;
+}
+#article-container figure.highlight .highlight-tools > * { flex-shrink: 0; white-space: nowrap; }
+#article-container figure.highlight .highlight-tools .copy-button { order: 3; cursor: pointer; }
+#article-container figure.highlight .highlight-tools .hl-fullscreen-btn { order: 4; cursor: pointer; }
+#article-container figure.highlight .highlight-tools .expand {
+  order: 5;
+  position: static;
+  padding: 0 4px;
+  color: #9a9a9a;
+}
+#article-container figure.highlight .highlight-tools :is(.copy-button, .hl-fullscreen-btn):hover {
+  background: rgba(255, 255, 255, .2);
+  color: #fff;
+}
+/* 复制按钮：图标换成"复制"样式的双方块，并在后面加上文字 */
+#article-container figure.highlight .highlight-tools .copy-button::before { content: "\f0c5"; }
+#article-container figure.highlight .highlight-tools .copy-button::after {
+  content: "复制";
+  font-family: var(--ap-font);
+  font-weight: 400;
+}
+
+/* 手机等窄屏：按钮只显示图标，不显示文字 */
+@media (max-width: 600px) {
+  #article-container figure.highlight .highlight-tools .copy-button::after,
+  #article-container figure.highlight .highlight-tools .hl-fullscreen-btn span {
+    display: none;
+  }
+}
+
+/* 全屏状态 */
+#article-container figure.highlight.hl-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  margin: 0;
+  border-radius: 0;
+  overflow: auto;
+}
+#article-container figure.highlight.hl-fullscreen .highlight-tools {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+#article-container figure.highlight.hl-fullscreen pre { font-size: 15px; }
+body.hl-fullscreen-open { overflow: hidden; }
 
 /* ---------- 表格：细线（代码块内部也是 table，要排除掉） ---------- */
 /* 主题默认 overflow-x: scroll 会一直显示滚动条，改成需要时才显示 */
