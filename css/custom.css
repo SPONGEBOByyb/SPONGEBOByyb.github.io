@@ -1,0 +1,145 @@
+/* ============================================================
+ * 笔记正文样式增强（通过 _config.butterfly.yml 的 inject 引入）
+ * 目标：标题层级分明、重点更醒目、列表缩进更清楚
+ * 只作用于文章正文 #article-container，不影响首页、侧栏等
+ * ============================================================ */
+
+:root {
+  --note-accent: #49b1f5;            /* 主色：与 Butterfly 默认主题色一致 */
+  --note-accent-soft: rgba(73, 177, 245, .10);
+  --note-h3: #ff7242;                /* 三级标题色 */
+  --note-h4: #1f9d8b;                /* 四级标题色 */
+  --note-mark: rgba(255, 196, 0, .38);  /* 加粗的荧光笔高亮 */
+  --note-strong: #1f2d3d;
+  --note-guide: rgba(73, 177, 245, .6);  /* 嵌套列表的竖线 */
+  --note-quote-text: #4c5560;
+}
+
+[data-theme="dark"] {
+  --note-accent: #6cc4ff;
+  --note-accent-soft: rgba(108, 196, 255, .12);
+  --note-h3: #ff9a6b;
+  --note-h4: #4fd1bd;
+  --note-mark: rgba(255, 196, 0, .28);
+  --note-strong: #f2f2f2;
+  --note-guide: rgba(108, 196, 255, .5);
+  --note-quote-text: #b9c0c8;
+}
+
+/* ---------- 正文：字号与行距 ---------- */
+#article-container {
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ---------- 标题层级 ---------- */
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4 {
+  line-height: 1.5;
+}
+
+/* 一级/二级标题：色块 + 左侧粗色条，作为大章节 */
+#article-container h1,
+#article-container h2 {
+  margin: 2.2em 0 1em;
+  padding: .45em .8em;
+  border-left: 6px solid var(--note-accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--note-accent-soft);
+}
+#article-container h1 { font-size: 1.6em; }
+#article-container h2 { font-size: 1.4em; }
+
+/* 三级标题：左侧细色条，作为小节 */
+#article-container h3 {
+  margin: 1.8em 0 .8em;
+  padding-left: .65em;
+  border-left: 4px solid var(--note-h3);
+  font-size: 1.2em;
+}
+
+/* 四级标题：彩色字 + 小方块标记 */
+#article-container h4 {
+  margin: 1.5em 0 .6em;
+  color: var(--note-h4);
+  font-size: 1.08em;
+}
+#article-container h4::before {
+  content: "";
+  display: inline-block;
+  width: .5em;
+  height: .5em;
+  margin-right: .5em;
+  border-radius: 2px;
+  background: var(--note-h4);
+  vertical-align: .12em;
+}
+
+/* 标题里的公式不要被色块背景挤压 */
+#article-container h2 mjx-container,
+#article-container h3 mjx-container {
+  margin: 0 .15em;
+}
+
+/* ---------- 重点：加粗 = 荧光笔高亮 ---------- */
+#article-container strong,
+#article-container b {
+  color: var(--note-strong);
+  font-weight: 700;
+  background: linear-gradient(transparent 58%, var(--note-mark) 0);
+  padding: 0 .1em;
+}
+/* 标题和表头里的加粗不需要高亮 */
+#article-container :is(h1, h2, h3, h4, h5, h6, th) :is(strong, b) {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ---------- 列表：缩进与层级引导线 ---------- */
+#article-container ul,
+#article-container ol {
+  padding-left: 1.6em;
+}
+#article-container li {
+  margin: .3em 0;
+}
+#article-container li::marker {
+  color: var(--note-accent);
+  font-weight: 700;
+}
+
+/* 嵌套列表：更深的缩进 + 左侧虚线，一眼看出从属关系 */
+#article-container li > ul,
+#article-container li > ol {
+  margin: .3em 0 .3em .2em;
+  padding-left: 1.4em;
+  border-left: 2px dashed var(--note-guide);
+}
+#article-container li > ul > li::marker,
+#article-container li > ol > li::marker {
+  color: var(--note-h3);
+}
+#article-container li li > ul > li::marker,
+#article-container li li > ol > li::marker {
+  color: var(--note-h4);
+}
+
+/* ---------- 引用块：补充说明 / 总结 ---------- */
+#article-container blockquote {
+  margin: 1em 0;
+  padding: .6em 1em;
+  border-left-width: 4px;
+  border-radius: 0 6px 6px 0;
+  color: var(--note-quote-text);
+}
+#article-container blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- 段落间距 ---------- */
+#article-container p {
+  margin: 0 0 .9em;
+}
